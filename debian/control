@@ -1,0 +1,14 @@
+Source: cutecom
+Section: comm
+Priority: optional
+Maintainer: Jorge Salamero Sanz <bencer@cauterized.net>
+Build-Depends: cdbs, debhelper (>= 5.0), qt3-dev-tools, libqt3-mt-dev
+Standards-Version: 3.7.2
+
+Package: cutecom
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A graphical serial terminal
+ CuteCom is a graphical serial terminal, like minicom or Hyperterminal on
+ Windows. It is aimed mainly at hardware developers or other people who need
+ a terminal to talk to their devices.

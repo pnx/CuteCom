@@ -1,0 +1,18 @@
+diff -Nur cutecom-0.14.0/cutecom.pro cutecom-0.14.0.new/cutecom.pro
+--- cutecom-0.14.0/cutecom.pro	2006-08-17 13:54:54.000000000 +0200
++++ cutecom-0.14.0.new/cutecom.pro	2006-08-17 14:07:51.000000000 +0200
+@@ -11,12 +11,12 @@
+ CONFIG	+= qt warn_on release thread
+ LANGUAGE	= C++
+ 
+-DESKTOP_PATH = $$system(kde-config --install apps --expandvars)
++DESKTOP_PATH = /usr/share/applnk
+ 
+ desktop.files=cutecom.desktop
+ desktop.path=$$DESKTOP_PATH/Utilities
+ #desktop.extra=echo "CuteCom will be installed in the Utilities submenu"
+ 
+-target.path = /usr/local/bin
++target.path = /usr/bin
+ INSTALLS += target desktop
+ 
