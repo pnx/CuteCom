@@ -1,0 +1,25 @@
+Cutecom 0.14.0, July 16th, 2006
+
+Cutecom is a graphical serial terminal, like minicom.
+It is aimed mainly at hardware developers or other people
+who need a terminal to talk to their devices.
+It is free software and distributed under the GNU General
+Public License Version 2, which can find in the file COPYING.
+
+It is written using the Qt library by Trolltech (www.trolltech.com).
+
+Cutecom doesn't use the autotools (autoconf, automake, libtool, etc.)
+Instead "configure" is simply a wrapper script which calls qmake.
+To uninstall cutecom simply delete the file "cutecom" and the file 
+"cutecom.desktop" amd your done. The config file is ~/.qt/cutecomrc.
+
+Currently only Linux is supported, but porting should be easy.
+Everything platformspecific should be in QCPPDialogImpl::setNewOptions().
+Distributions welcome :-)
+
+Cutecom is heavily inspired by Bray++ for Windows (http://bray.velenje.cx/avr/terminal/)
+
+Homepage: http://cutecom.sourceforge.net
+
+Alexander Neundorf
+<neundorf@kde.org>
