@@ -19,7 +19,7 @@
 #ifndef QCPPIALOGIMPL_H
 #define QCPPIALOGIMPL_H
 
-#include ".ui/cutecommdlg.h"
+#include "cutecommdlg.h"
 
 #include <termios.h>
 

@@ -1,7 +1,7 @@
 SOURCES	+= main.cpp qcppdialogimpl.cpp
 HEADERS	+= qcppdialogimpl.h
 unix {
-  UI_DIR = .ui
+  UI_DIR = ./
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
 }
