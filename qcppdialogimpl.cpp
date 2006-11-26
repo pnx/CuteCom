@@ -751,6 +751,9 @@ void QCPPDialogImpl::connectTTY()
       return;
    }
 
+   // flushing is to be done after opening. This prevents first read and write to be spam'ish.
+   tcflush(m_fd, TCIOFLUSH);
+
    if (m_applyCb->isChecked())
    {
       int n = fcntl(m_fd, F_GETFL, 0);

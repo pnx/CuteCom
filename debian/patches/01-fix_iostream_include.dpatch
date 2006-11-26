@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 01-fix_iostream_include.dpatch by Roman I Khimov <roman@khimov.ru>
+##
+## DP: Fixes a compilation warning about '#include <*.h>' deprecation
+
+@DPATCH@
+
+--- cutecom-0.14.0/qcppdialogimpl.cpp.orig	2006-11-24 13:12:02.944655250 +0300
++++ cutecom-0.14.0/qcppdialogimpl.cpp	2006-11-24 13:12:14.465375250 +0300
+@@ -38,7 +38,8 @@
+ #include <qregexp.h>
+ #include <qspinbox.h>
+ 
+-#include <iostream.h>
++#include <iostream>
++using namespace std;
+ 
+ #include <errno.h>
+ #include <unistd.h>

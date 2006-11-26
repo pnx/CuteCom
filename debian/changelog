@@ -1,6 +1,8 @@
-cutecom (0.14.0-1) unstable; urgency=low
+cutecom (0.14.1-1) unstable; urgency=low
 
-  * Initial release (Closes: #350943)
+  * Initial release (Closes: #400388)
+  * Change CMakeLists.txt to install cutecom.desktop into fixed (proper for
+    Debian) location.
+  * Add patches to fix compile warnings
 
- -- Jorge Salamero Sanz <bencer@cauterized.net>  Tue,  8 Aug 2006 18:32:57 +0200
-
+ -- Roman I Khimov <roman@khimov.ru>  Fri, 26 Nov 2006 19:15:49 +0300

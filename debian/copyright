@@ -1,20 +1,30 @@
-This package was debianized by Jorge Salamero Sanz <bencer@cauterized.net> on
-Tue,  8 Aug 2006 18:32:57 +0200.
+This package was debianized by Roman I Khimov <roman@khimov.ru> on
+Fri, 24 Nov 2006 00:19:24 +0300.
 
-It was downloaded from http://cutecom.sourceforge.net/cutecom-0.14.0.tar.gz
+It was downloaded from: http://cutecom.sourceforge.net/
 
 Upstream Author: Alexander Neundorf <neundorf@kde.org>
 
-Copyright: (C) 2005, Alexander Neundorf <neundorf@kde.org>
+This software is copyright (c) 2004-2006 by Alexander Neundorf
 
 License:
 
-This software may be distributed under the terms of the
-GNU General Public License (GPL).
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
 
-On Debian systems, the complete text of the GNU General Public
-License can be found in /usr/share/common-licenses/GPL file.
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
-The Debian packaging is (C) 2006, Jorge Salamero Sanz <bencer@cauterized.net>
-and is licensed under the GPL, see `/usr/share/common-licenses/GPL'.
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+The Debian packaging is (C) 2006, Roman I Khimov <roman@khimov.ru> and
+is licensed under the GPL, see above.

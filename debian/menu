@@ -1,6 +1,2 @@
-?package(cutecom): \
-  needs="X11" \
-  section="Apps/Net" \
-  title="CuteCom" \
-  longtitle="CuteCom is a graphical serial terminal" \
-  command="/usr/bin/cutecom"
+?package(cutecom):needs="X11" section="Apps/Tools"\
+  title="Cutecom" command="/usr/bin/cutecom"
