@@ -1,3 +1,10 @@
+cutecom (0.14.1-2) unstable; urgency=low
+
+  * Resolve 'cutecom override disparity' found by Debian Installer, moving
+    package into 'comm' section
+
+ -- Roman I Khimov <roman@khimov.ru>  Fri, 27 Nov 2006 09:27:09 +0300
+
 cutecom (0.14.1-1) unstable; urgency=low
 
   * Initial release (Closes: #400388)

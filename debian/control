@@ -1,5 +1,5 @@
 Source: cutecom
-Section: x11
+Section: comm
 Priority: optional
 Maintainer: Roman I Khimov <roman@khimov.ru>
 Build-Depends: debhelper (>= 5), cmake (>= 2.4.3), dpatch, libqt3-mt-dev
