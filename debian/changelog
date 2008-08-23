@@ -1,3 +1,19 @@
+cutecom (0.20.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Switch from qt3 to qt4
+  * Upgrade package to standards 3.8.0
+  * Upgrade package to debhelper 7
+  * Rewrite copyright file in machine-interpretable format
+  * Add homepage field in control
+  * Switch from dpatch to quilt for patch management
+  * Remove 01-fix_iostream_include.dpatch and 02-fix_comparison_warning.dpatch
+    patches (moved upstream)
+  * Add fix_pathes_for_debian.patch, changes install path to conform Debian
+    standards
+
+ -- Roman I Khimov <roman@khimov.ru>  Sun, 23 Aug 2008 14:31:40 +0400
+
 cutecom (0.14.1-2) unstable; urgency=low
 
   * Resolve 'cutecom override disparity' found by Debian Installer, moving

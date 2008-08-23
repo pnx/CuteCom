@@ -2,8 +2,9 @@ Source: cutecom
 Section: comm
 Priority: optional
 Maintainer: Roman I Khimov <roman@khimov.ru>
-Build-Depends: debhelper (>= 5), cmake (>= 2.4.3), dpatch, libqt3-mt-dev
-Standards-Version: 3.7.2
+Build-Depends: debhelper (>= 7), cmake (>= 2.4.3), libqt4-dev, quilt (>= 0.40)
+Standards-Version: 3.8.0
+Homepage: http://cutecom.sourceforge.net/
 
 Package: cutecom
 Architecture: any

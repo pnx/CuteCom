@@ -1,30 +1,17 @@
-This package was debianized by Roman I Khimov <roman@khimov.ru> on
-Fri, 24 Nov 2006 00:19:24 +0300.
+Format-Specification:
+    http://wiki.debian.org/Proposals/CopyrightFormat?action=recall&rev=226
+Upstream-Name: CuteCom
+Upstream-Source: http://cutecom.sourceforge.net/
+Upstream-Maintainer: Alexander Neundorf <neundorf@kde.org>
 
-It was downloaded from: http://cutecom.sourceforge.net/
+Files: *
+Copyright: Copyright 2004-2008, Alexander Neundorf <neundorf@kde.org>
+License: GPL-2+
+ On Debian systems the full text of the GNU General Public License can be found
+ in the `/usr/share/common-licenses/GPL-2' file.
 
-Upstream Author: Alexander Neundorf <neundorf@kde.org>
-
-This software is copyright (c) 2004-2006 by Alexander Neundorf
-
-License:
-
-   This package is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   This package is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this package; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
-
-On Debian systems, the complete text of the GNU General
-Public License can be found in `/usr/share/common-licenses/GPL'.
-
-The Debian packaging is (C) 2006, Roman I Khimov <roman@khimov.ru> and
-is licensed under the GPL, see above.
+Files: debian/*
+Copyright: Copyright 2006-2008 Roman I Khimov <roman@khimov.ru>
+License: GPL-2+
+ On Debian systems the full text of the GNU General Public License can be found
+ in the `/usr/share/common-licenses/GPL-2' file.

@@ -1,17 +1,28 @@
 cmake_minimum_required(VERSION 2.4.3 FATAL_ERROR )
 
-find_package(Qt3 REQUIRED)
+project(CuteCom)
 
-include_directories(${QT_INCLUDE_DIR} ${CMAKE_BINARY_DIR})
+find_package(Qt4 REQUIRED)
 
+include_directories(${QT_INCLUDES} ${CMAKE_BINARY_DIR})
+add_definitions(-DQT3_SUPPORT)
 set(cutecomSrcs main.cpp qcppdialogimpl.cpp)
 
-qt_wrap_cpp(foo cutecomSrcs qcppdialogimpl.h)
+qt4_wrap_cpp(cutecomSrcs qcppdialogimpl.h)
 
-qt_wrap_ui(foo uiHeaders cutecomSrcs cutecommdlg.ui)
+qt4_wrap_ui(cutecomSrcs cutecommdlg.ui)
 
 add_executable(cutecom ${cutecomSrcs} ${uiHeaders})
-target_link_libraries(cutecom ${QT_LIBRARIES})
+target_link_libraries(cutecom ${QT_QT3SUPPORT_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
 
 install(TARGETS cutecom DESTINATION bin )
-install(FILES cutecom.desktop DESTINATION share/applnk/Utilities)
+
+install(FILES cutecom.1 DESTINATION man/man1 )
+
+find_program(KDECONFIG_EXECUTABLE NAMES kde-config )
+
+if (KDECONFIG_EXECUTABLE)
+   # then ask kde-config for the kde data dirs
+   exec_program(${KDECONFIG_EXECUTABLE} ARGS --install apps --expandvars OUTPUT_VARIABLE _apps_DIR )
+   install(FILES cutecom.desktop DESTINATION ${_apps_DIR}/Utilities)
+endif (KDECONFIG_EXECUTABLE)

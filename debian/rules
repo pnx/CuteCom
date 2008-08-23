@@ -11,9 +11,9 @@ else
 	CFLAGS += -O2
 endif
 
-include /usr/share/dpatch/dpatch.make
+include /usr/share/quilt/quilt.make
 
-config: patch-stamp
+config: patch
 	dh_testdir
 	mkdir -p build
 	cd build && cmake -DCMAKE_INSTALL_PREFIX=$(CURDIR)/debian/cutecom/usr \
@@ -34,16 +34,16 @@ clean: clean-patched unpatch
 clean-patched:
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp 
+	rm -f build-stamp
 
 	rm -fr build
 
-	dh_clean 
+	dh_clean
 
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 
 	cd build && $(MAKE) install
@@ -59,7 +59,6 @@ binary-arch: build install
 	dh_installchangelogs Changelog
 	dh_installdocs
 	dh_installexamples
-	dh_installman debian/cutecom.1
 	dh_link
 	dh_strip
 	dh_compress
@@ -71,4 +70,4 @@ binary-arch: build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install
