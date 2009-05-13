@@ -1,3 +1,10 @@
+cutecom (0.21.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Upgrade package to standards 3.8.1
+
+ -- Roman I Khimov <roman@khimov.ru>  Wed, 13 May 2009 23:09:09 +0400
+
 cutecom (0.20.0-1) unstable; urgency=low
 
   * New upstream release
