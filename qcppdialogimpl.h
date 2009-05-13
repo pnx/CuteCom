@@ -66,6 +66,7 @@ class QCPPDialogImpl:public QWidget, public Ui::CuteCommDlg
       void hexOutputClicked(bool on);
       void enableLogging(bool on);
       void chooseLogFile();
+      void clearOutput();
    protected:
       void addOutput(const QString& text);
       bool sendByte(char c, unsigned int delay);
@@ -96,8 +97,8 @@ class QCPPDialogImpl:public QWidget, public Ui::CuteCommDlg
 
       QTimer m_keyRepeatTimer;
       char m_keyCode;
-//    bool m_firstRep;
       unsigned int m_hexBytes;
+      char m_previousChar;
 
       QFile m_logFile;
 
