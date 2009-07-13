@@ -1,5 +1,12 @@
-0.20.1, May 10th, 2009
--disconnect from the device if it disappears, e.g. from USB, patch by Bjoern Struck
+0.22.0, June 27th, 2009
+-CuteCom now also works on Mac OS X, patch by Oliver Klauke
+-support for more baudrates
+-install man page to <prefix>/share/man/man1 instead to <prefix>/man/man1 
+ (seems to be more standard conform)
+-require Qt >= 4.1.0 (0.21.0 required 4.3)
+
+0.21.0, May 11th, 2009
+-disconnect from the device if it disappears, e.g. from USB, patch by Bjoern Spruck
 -less Qt3Support usage
 
 0.20.0, Mar 12th, 2008
