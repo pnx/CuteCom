@@ -11,4 +11,4 @@ Index: cutecom-0.22.0/CMakeLists.txt
 -   exec_program(${KDECONFIG_EXECUTABLE} ARGS --install apps --expandvars OUTPUT_VARIABLE _apps_DIR )
 -   install(FILES cutecom.desktop DESTINATION ${_apps_DIR}/Utilities)
 -endif (KDECONFIG_EXECUTABLE)
-+install(FILES cutecom.desktop DESTINATION share/applnk/Utilities)
++install(FILES cutecom.desktop DESTINATION share/applications/kde)

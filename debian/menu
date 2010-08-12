@@ -1,2 +1,0 @@
-?package(cutecom):needs="X11" section="Apps/Tools"\
-  title="Cutecom" command="/usr/bin/cutecom"

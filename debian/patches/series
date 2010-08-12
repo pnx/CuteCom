@@ -1,1 +1,3 @@
 fix_pathes_for_debian.patch
+cutecom-0.22.0-nolinebreak.diff
+cutecom-remove-deprecated-desktop-entries.patch

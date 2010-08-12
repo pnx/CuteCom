@@ -1,3 +1,17 @@
+cutecom (0.22.0-2) unstable; urgency=low
+
+  * Add cutecom-0.22.0-nolinebreak.diff (closes: #591666)
+  * Install menu item for simple window managers (was always present in
+    debian dir, but not installed), change deprecated Apps/Tools section
+    to Applications/System/Hardware (nothing more appropriate IMO)
+  * Move .desktop file from /usr/share/applnk to more appropriate
+    /usr/share/applications/kde (should fix Ubuntu bug 379932)
+  * Add cutecom-remove-deprecated-desktop-entries.patch, fixes lintian
+    warnings
+  * Upgrade package to standards 3.9.1
+
+ -- Roman I Khimov <roman@khimov.ru>  Thu, 12 Aug 2010 22:47:38 +0400
+
 cutecom (0.22.0-1) unstable; urgency=low
 
   * New upstream release

@@ -1,0 +1,41 @@
+diff -ruN cutecom-0.22.0/qcppdialogimpl.cpp cutecom-0.22.0-nolinebreak/qcppdialogimpl.cpp
+--- cutecom-0.22.0/qcppdialogimpl.cpp	2009-06-25 21:10:49.000000000 +0100
++++ cutecom-0.22.0-nolinebreak/qcppdialogimpl.cpp	2010-08-04 15:57:15.951009886 +0100
+@@ -18,6 +18,7 @@
+ 
+ #include "qcppdialogimpl.h"
+ 
++#include <qscrollbar.h>
+ #include <qcombobox.h>
+ #include <qpushbutton.h>
+ #include <qcheckbox.h>
+@@ -1362,13 +1363,23 @@
+ 
+ void QCPPDialogImpl::doOutput()
+ {
+-   if (m_outputBuffer.isEmpty())
+-   {
+-      return;
+-   }
++  QScrollBar* vScrollBar;
++  bool scrollWithText;
++
++  if (m_outputBuffer.isEmpty())
++    return;
++  
++  vScrollBar = m_outputView->verticalScrollBar();
++  scrollWithText = (vScrollBar->value() == vScrollBar->maximum());
++  
++  QTextCursor cursor(m_outputView->document());
++  cursor.movePosition(QTextCursor::End);
++  cursor.insertText(m_outputBuffer);
++
++  if ((scrollWithText))
++    vScrollBar->setValue(vScrollBar->maximum());
+ 
+-   m_outputView->append(m_outputBuffer); 
+-   m_outputBuffer.clear();
++  m_outputBuffer.clear();
+ }
+ 
+ void QCPPDialogImpl::hexOutputClicked(bool /* on */)
