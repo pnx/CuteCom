@@ -133,7 +133,7 @@ QCPPDialogImpl::QCPPDialogImpl(QWidget* parent)
    connect(m_enableLoggingCb, SIGNAL(toggled(bool)), this, SLOT(enableLogging(bool)));
 //   connect(m_enableLoggingCb, SIGNAL(toggled(bool)), this, SLOT(enableLogging(bool)));
 
-   m_outputView->setWordWrapMode(QTextOption::WrapAnywhere); 
+   m_outputView->setWordWrapMode(QTextOption::WrapAnywhere);
    m_outputView->document()->setMaximumBlockCount(500);
 //  TODO ? m_outputView->setWordWrap(Q3TextEdit::WidgetWidth);
 
@@ -157,7 +157,7 @@ void QCPPDialogImpl::fillBaudCb()
 #ifdef B0
    m_baudCb->addItem("0");
 #endif
-   
+
 #ifdef B50
    m_baudCb->addItem("50");
 #endif
@@ -653,7 +653,7 @@ bool QCPPDialogImpl::eventFilter(QObject* watched, QEvent *e)
 //            std::cerr<<"c";
             m_keyCode=3;
             sendByte(m_keyCode, 0);
-            m_keyRepeatTimer.setSingleShot(false); 
+            m_keyRepeatTimer.setSingleShot(false);
             m_keyRepeatTimer.start(0);
             return true;
          }
@@ -1045,7 +1045,7 @@ void QCPPDialogImpl::setNewOptions(int baudrate, int databits, const QString& pa
 #ifdef B0
    case      0: _baud=B0;     break;
 #endif
-   
+
 #ifdef B50
    case     50: _baud=B50;    break;
 #endif
@@ -1344,7 +1344,7 @@ void QCPPDialogImpl::addOutput(const QString& text)
    {
       doOutput();
       m_outputTimerStart.restart();
-      m_outputTimer.setSingleShot(true); 
+      m_outputTimer.setSingleShot(true);
       m_outputTimer.start(50);
    }
    else
@@ -1355,7 +1355,7 @@ void QCPPDialogImpl::addOutput(const QString& text)
          doOutput();
          m_outputTimerStart.restart();
       }
-      m_outputTimer.setSingleShot(true); 
+      m_outputTimer.setSingleShot(true);
       m_outputTimer.start(50);
    }
 }
@@ -1439,4 +1439,3 @@ void QCPPDialogImpl::chooseLogFile()
       m_logFileLe->setText(logFile);
    }
 }
-
