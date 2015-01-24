@@ -1367,7 +1367,9 @@ void QCPPDialogImpl::doOutput()
       return;
    }
 
-   m_outputView->append(m_outputBuffer); 
+   m_outputView->moveCursor(QTextCursor::End);
+   m_outputView->insertPlainText(m_outputBuffer);
+   m_outputView->moveCursor(QTextCursor::End);
    m_outputBuffer.clear();
 }
 
