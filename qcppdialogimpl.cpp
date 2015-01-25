@@ -1270,11 +1270,6 @@ void QCPPDialogImpl::readData(int fd)
       return;
    }
 
-   if (m_logFile.isOpen())
-   {
-      m_logFile.write(m_buf, bytesRead);
-   }
-
    QString text;
    char buf[16];
    for (int i=0; i<bytesRead; i++)
@@ -1365,6 +1360,11 @@ void QCPPDialogImpl::doOutput()
    if (m_outputBuffer.isEmpty())
    {
       return;
+   }
+
+   if (m_logFile.isOpen())
+   {
+      m_logFile.write(m_outputBuffer);
    }
 
    m_outputView->moveCursor(QTextCursor::End);
