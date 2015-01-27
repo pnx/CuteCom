@@ -254,6 +254,8 @@ void QCPPDialogImpl::saveSettings()
 
    settings.setValue("/cutecom/OpenForReading", m_readCb->isChecked());
    settings.setValue("/cutecom/OpenForWriting", m_writeCb->isChecked());
+   settings.setValue("/cutecom/TimestampEnabled", m_timestampEnabled->isChecked());
+   settings.setValue("/cutecom/TimestampFormat", m_timestampFormat->text());
    settings.setValue("/cutecom/DontApplySettings", !m_applyCb->isChecked());
 
    settings.setValue("/cutecom/Device", m_deviceCb->currentText());
@@ -317,6 +319,8 @@ void QCPPDialogImpl::readSettings()
    m_softwareCb->setChecked(settings.value("/cutecom/SoftwareHandshake", false).toBool());
    m_readCb->setChecked(settings.value("/cutecom/OpenForReading", true).toBool());
    m_writeCb->setChecked(settings.value("/cutecom/OpenForWriting", true).toBool());
+   m_timestampEnabled->setChecked(settings.value("/cutecom/TimestampEnabled", false).toBool());
+   m_timestampFormat->setText(settings.value("/cutecom/TimestampFormat", "[%T]").toString());
 
    m_applyCb->setChecked(!settings.value("/cutecom/DontApplySettings", false).toBool());
    enableSettingWidgets(m_applyCb->isChecked());
