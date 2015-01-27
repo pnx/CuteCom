@@ -984,6 +984,8 @@ void QCPPDialogImpl::enableSettingWidgets(bool enable)
    m_stopCb->setEnabled(enable);
    m_softwareCb->setEnabled(enable);
    m_hardwareCb->setEnabled(enable);
+   m_timestampEnabled->setEnabled(enable);
+   m_timestampFormat->setEnabled(enable);
 }
 
 void QCPPDialogImpl::disconnectTTY()
