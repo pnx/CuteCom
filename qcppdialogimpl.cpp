@@ -56,6 +56,7 @@ using namespace std;
 #include <sys/types.h>
 #include <sys/select.h>
 #include <fcntl.h>
+#include <time.h>
 
 void millisleep(int ms)
 {
@@ -66,6 +67,17 @@ void millisleep(int ms)
       tv.tv_usec=ms*1000;
       select(0, 0, 0, 0, &tv);
    }
+}
+
+static QString formatTime(const QString& format)
+{
+   char buffer[128] = { '\0' };
+   time_t now = time(NULL);
+   struct tm *t = localtime(&now);
+
+   if (t)
+      strftime(buffer, sizeof(buffer), format, t);
+   return buffer;
 }
 
 QCPPDialogImpl::QCPPDialogImpl(QWidget* parent)
@@ -1339,7 +1351,14 @@ void QCPPDialogImpl::readData(int fd)
 
 void QCPPDialogImpl::addOutput(const QString& text)
 {
-   m_outputBuffer+=text;
+   if (m_timestampEnabled->isChecked())
+   {
+      m_outputBuffer+=appendTimestamp(text);
+   }
+   else
+   {
+      m_outputBuffer+=text;
+   }
 
    if (!m_outputTimer.isActive())
    {
@@ -1359,6 +1378,51 @@ void QCPPDialogImpl::addOutput(const QString& text)
       m_outputTimer.setSingleShot(true);
       m_outputTimer.start(50);
    }
+}
+
+QString QCPPDialogImpl::appendTimestamp(const QString& text) const
+{
+   QString str = text;
+   QString timestamp = formatTime(m_timestampFormat->text() + " ");
+
+   if (!timestamp.isEmpty())
+   {
+      bool trim = false;
+
+      // Trim all newlines at the end first.
+      while(str.endsWith('\n'))
+      {
+         trim = true;
+         str.chop(1);
+      }
+
+      // Append timestamps after newlines.
+      str.replace("\n", "\n" + timestamp);
+
+      // Write a timestamp at start if we are
+      // at the beginning of a line.
+      if (isOutputAtLineStart())
+         str = timestamp + str;
+
+      // Append one newline if we trimmed some.
+      if (trim)
+         str += "\n";
+   }
+   return str;
+}
+
+bool QCPPDialogImpl::isOutputAtLineStart() const
+{
+   // Check buffer if it's not empty.
+   if (!m_outputBuffer.isEmpty()) {
+      return m_outputBuffer.endsWith('\n');
+   }
+   // Otherwise, empty output is a new line.
+   if (m_outputView->text().isEmpty())
+   {
+      return true;
+   }
+   return m_outputView->text().endsWith('\n');
 }
 
 void QCPPDialogImpl::doOutput()

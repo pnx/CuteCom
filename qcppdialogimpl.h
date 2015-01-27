@@ -70,6 +70,8 @@ class QCPPDialogImpl:public QWidget, public Ui::CuteCommDlg
    protected:
       void fillBaudCb();
       void addOutput(const QString& text);
+      QString appendTimestamp(const QString& text) const;
+      bool isOutputAtLineStart() const;
       bool sendByte(char c, unsigned int delay);
       void disconnectTTYRestore(bool restore);
       void readSettings();
