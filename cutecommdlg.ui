@@ -256,13 +256,23 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="textLabel1_3">
-           <property name="text">
-            <string>Open for:</string>
+         <item row="2" column="1">
+          <widget class="QCheckBox" name="m_timestampEnabled">
+           <property name="toolTip">
+            <string>Add local time stamp to serial output</string>
            </property>
-           <property name="wordWrap">
-            <bool>false</bool>
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="m_datestampEnabled">
+           <property name="toolTip">
+            <string>Add date to time stamp of serial output</string>
+           </property>
+           <property name="text">
+            <string>Date</string>
            </property>
           </widget>
          </item>
@@ -276,40 +286,20 @@
            </property>
           </widget>
          </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout2">
-         <item>
-          <widget class="QLabel" name="TextLabel">
+         <item row="1" column="0">
+          <widget class="QLabel" name="textLabel1_3">
            <property name="text">
-            <string>Timestamp</string>
+            <string>Open for:</string>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QCheckBox" name="m_timestampEnabled">
-           <property name="layoutDirection">
-            <enum>Qt::RightToLeft</enum>
-           </property>
+         <item row="2" column="0">
+          <widget class="QLabel" name="timestampLabel">
            <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="m_timestampFormat">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>140</width>
-             <height>25</height>
-            </size>
+            <string>Timestamp:</string>
            </property>
           </widget>
          </item>

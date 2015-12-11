@@ -69,14 +69,28 @@ void millisleep(int ms)
    }
 }
 
-static QString formatTime(const QString& format)
+static QString formatTime(bool use_time, bool use_date)
 {
-   char buffer[128] = { '\0' };
-   time_t now = time(NULL);
-   struct tm *t = localtime(&now);
+   char buffer[32] = { '\0' };
+   char* p = &buffer[0];
+   struct timeval now;
+   struct tm ltime;
 
-   if (t)
-      strftime(buffer, sizeof(buffer), format, t);
+   gettimeofday(&now, NULL);
+   now.tv_usec /= 1000;
+   localtime_r(&now.tv_sec, &ltime);
+
+   if (use_date) {
+      int n = snprintf(p, 16, "%04d-%02d-%02d ",
+            1900 + ltime.tm_year, ltime.tm_mon + 1, ltime.tm_mday);
+      p += n;
+   }
+
+   if (use_time) {
+      snprintf(p, 16, "%02d:%02d:%02d.%03ld ",
+            ltime.tm_hour, ltime.tm_min, ltime.tm_sec, now.tv_usec);
+   }
+
    return buffer;
 }
 
@@ -267,7 +281,7 @@ void QCPPDialogImpl::saveSettings()
    settings.setValue("/cutecom/OpenForReading", m_readCb->isChecked());
    settings.setValue("/cutecom/OpenForWriting", m_writeCb->isChecked());
    settings.setValue("/cutecom/TimestampEnabled", m_timestampEnabled->isChecked());
-   settings.setValue("/cutecom/TimestampFormat", m_timestampFormat->text());
+   settings.setValue("/cutecom/DatestampEnabled", m_datestampEnabled->isChecked());
    settings.setValue("/cutecom/DontApplySettings", !m_applyCb->isChecked());
 
    settings.setValue("/cutecom/Device", m_deviceCb->currentText());
@@ -331,8 +345,8 @@ void QCPPDialogImpl::readSettings()
    m_softwareCb->setChecked(settings.value("/cutecom/SoftwareHandshake", false).toBool());
    m_readCb->setChecked(settings.value("/cutecom/OpenForReading", true).toBool());
    m_writeCb->setChecked(settings.value("/cutecom/OpenForWriting", true).toBool());
-   m_timestampEnabled->setChecked(settings.value("/cutecom/TimestampEnabled", false).toBool());
-   m_timestampFormat->setText(settings.value("/cutecom/TimestampFormat", "[%T]").toString());
+   m_timestampEnabled->setChecked(settings.value("/cutecom/TimestampEnabled", true).toBool());
+   m_datestampEnabled->setChecked(settings.value("/cutecom/DatestampEnabled", false).toBool());
 
    m_applyCb->setChecked(!settings.value("/cutecom/DontApplySettings", false).toBool());
    enableSettingWidgets(m_applyCb->isChecked());
@@ -997,7 +1011,7 @@ void QCPPDialogImpl::enableSettingWidgets(bool enable)
    m_softwareCb->setEnabled(enable);
    m_hardwareCb->setEnabled(enable);
    m_timestampEnabled->setEnabled(enable);
-   m_timestampFormat->setEnabled(enable);
+   m_datestampEnabled->setEnabled(enable);
 }
 
 void QCPPDialogImpl::disconnectTTY()
@@ -1351,7 +1365,7 @@ void QCPPDialogImpl::readData(int fd)
 
 void QCPPDialogImpl::addOutput(const QString& text)
 {
-   if (m_timestampEnabled->isChecked())
+   if (m_timestampEnabled->isChecked() || m_datestampEnabled->isChecked())
    {
       m_outputBuffer+=appendTimestamp(text);
    }
@@ -1383,7 +1397,9 @@ void QCPPDialogImpl::addOutput(const QString& text)
 QString QCPPDialogImpl::appendTimestamp(const QString& text) const
 {
    QString str = text;
-   QString timestamp = formatTime(m_timestampFormat->text() + " ");
+   QString timestamp = formatTime(
+         m_timestampEnabled->isChecked(),
+         m_datestampEnabled->isChecked() );
 
    if (!timestamp.isEmpty())
    {
