@@ -1293,7 +1293,7 @@ void QCPPDialogImpl::readData(int fd)
       return;
    }
 
-   const char* c=m_buf;
+   const char *c = m_buf;
    if (m_sz!=0)
    {
 //      std::cerr<<"readData() "<<bytesRead<<std::endl;
@@ -1313,8 +1313,7 @@ void QCPPDialogImpl::readData(int fd)
             snprintf(buf, 16, "%08x: ", m_hexBytes);
             text+=buf;
          }
-         unsigned int b=*c;
-         snprintf(buf, 16, "%02x ", b & 0xff);
+         snprintf(buf, 16, "%02hhx ", *c);
          text+=buf;
 
          m_hexBytes++;
@@ -1329,33 +1328,29 @@ void QCPPDialogImpl::readData(int fd)
       }
       else
       {
-         // also print a newline for \r, and print only one newline for \r\n
-         if ((isprint(*c)) || (*c=='\n') || (*c=='\r'))
-         {
-            if (*c=='\r')
+         switch (*c) {
+         case '\n':
+               if (m_previousChar == '\r') break;
+               // fall through
+         case '\r':
+               text += '\n';
+               break;
+         case '\t':
+               text += "    ";
+               break;
+         default:
+            if (isprint(*c))
             {
-               text+='\n';
-            }
-            else if (*c=='\n')
-            {
-               if (m_previousChar != '\r')
-               {
-                  text+='\n';
-               }
+               text += *c;
             }
             else
             {
-               text+=(*c);
+               unsigned int b = *c;
+               snprintf(buf, 16, "\\0x%02x", b & 0xff);
+               text += buf;
             }
-
-            m_previousChar = *c;
          }
-         else
-         {
-            unsigned int b=*c;
-            snprintf(buf, 16, "\\0x%02x", b & 0xff);
-            text+=buf;
-         }
+         m_previousChar = *c;
       }
       c++;
    }
